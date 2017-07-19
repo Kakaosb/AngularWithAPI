@@ -1,0 +1,70 @@
+﻿
+<div ng-controller="contactController">
+    <h1>Please, fill and send the form:</h1>
+    <br />
+    <br />
+    <form name="contactForm" ng-model="contactForm">
+        <div class="row form-group">
+            <div class="col-md-1">
+                <label>Name</label>
+            </div>
+            <div class="col-md-3">
+                <input class="form-control" ng-model="contact.Name" name="name" required maxlength="15" />
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-1">
+                <label>Sername</label>
+            </div>
+            <div class="col-md-3">
+                <input class="form-control" ng-model="contact.Sername" required maxlength="20" />
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-1">
+                <label>Gender</label>
+            </div>
+            <div class="col-md-3">
+                <label>
+                    <input type="radio" ng-model="contact.Gender" name="Gender" required value=0>
+                    Male
+                </label><br />
+                <label>
+                    <input type="radio" ng-model="contact.Gender" name="Gender" required value=1>
+                    Female
+                </label><br />
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-1">
+                <label>Older 21</label>
+            </div>
+
+            <div class="col-md-3">
+                <input class="form-control my-checkbox" type="checkbox" ng-model="contact.IsAdult" value="false" />
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-1">
+                <label>Continent</label>
+            </div>
+            <div class="col-md-3">
+                <select name="continent" ng-model="contact.Continent" required class="form-control">
+                    <option value="">Please select continent</option>
+                    <option ng-repeat="item in continentList" value="{{item.index}}">{{item.value}}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-offset-1 col-md-3 right">
+                <input class="btn" type="submit" ng-click="sendData(contact, contactForm)" value="Send" />
+            </div>
+        </div>
+
+    </form>
+</div>

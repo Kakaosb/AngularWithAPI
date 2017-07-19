@@ -1,0 +1,136 @@
+﻿<div ng-controller="searchContactController"> 
+    <h1>Search Contacts</h1>
+    <br />
+    <br />
+    <div class="search">
+        <form name="searchForm" ng-model="searchForm">
+            <div class="search_group">
+                <div class="search_filed">
+                    <label>Name</label>
+                </div>
+                <div class="search_value">
+                    <input class="form-control" ng-model="search.Name" maxlength="15" />
+                </div>
+            </div>
+
+            <div class="search_group">
+                <div class="search_filed">
+                    <label>Sername</label>
+                </div>
+                <div class="search_value">
+                    <input class="form-control" ng-model="search.Sername" maxlength="20" />
+                </div>
+            </div>
+
+            <div class="search_group">
+                <div class="search_filed">
+                    <label>Gender</label>
+                </div>
+                <div class="search_value search_radio">
+                    <label>
+                        <input type="radio" ng-model="search.Gender" name="Gender" required value="Male">
+                        Male
+                    </label>
+                    <label>
+                        <input type="radio" ng-model="search.Gender" name="Gender" required value="Female">
+                        Female
+                    </label>
+                    <label>
+                        <input type="radio" ng-model="search.Gender" name="Gender" required value="null">
+                        Both
+                    </label>
+                </div>
+            </div>
+
+            <div class="search_group">
+                <div class="search_filed">
+                    <label>Older 21</label>
+                </div>
+
+                <div class="search_value search_radio">
+                    <label>
+                        <input type="radio" ng-model="search.IsAdult" name="isAdult" required value="true">
+                        Yes
+                    </label>
+                    <label>
+                        <input type="radio" ng-model="search.IsAdult" name="isAdult" required value="false">
+                        No
+                    </label>
+                    <label>
+                        <input type="radio" ng-model="search.IsAdult" name="isAdult" required value="null" checked="checked">
+                        Both
+                    </label>
+                </div>
+            </div>
+
+            <div class="search_group">
+                <div class="search_filed">
+                    <label>Continent</label>
+                </div>
+                <div class="search_value">
+                    <select name="continent" ng-model="search.Continent" class="form-control">
+                        <option value="null">-- select continent</option>
+                        <option ng-repeat="item in continentList" value="{{item.index}}">{{item.value}}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="search_btn">
+                <input class="btn" type="submit" ng-click="searchContact(search, searchForm)" value="Search" />
+            </div>
+        </form>
+    </div>
+
+    <div class="contact_block" ng-repeat="contact in contacts">
+        <h3>{{$index+1}}. </h3>
+        <span class="line">----------------------------------------</span>
+        <div class="group">
+            <div class="filed">
+                <label>Name</label>
+            </div>
+            <div class="fild_value">
+                <label>{{contact.Name}}</label>
+            </div>
+        </div>
+
+        <div class="group">
+            <div class="filed">
+                <label>Sername</label>
+            </div>
+            <div class="fild_value">
+                <label>{{contact.Sername}}</label>
+            </div>
+        </div>
+
+        <div class="group">
+            <div class="filed">
+                <label>Gender</label>
+            </div>
+            <div class="fild_value">
+                <label>{{contact.Gender}}</label>
+            </div>
+        </div>
+
+        <div class="group">
+            <div class="filed">
+                <label>Older 21</label>
+            </div>
+
+            <div class="fild_value">
+                <label>{{contact.IsAdult | boolReplace}}</label>
+            </div>
+        </div>
+
+        <div class="group">
+            <div class="filed">
+                <label>Continent</label>
+            </div>
+            <div class="fild_value">
+                <label> {{ contact.Continent | strReplace:'_':' ' }}</label>
+            </div>
+        </div>
+        <span class="line">----------------------------------------</span>
+        <br />
+        <br />
+    </div>
+</div>
